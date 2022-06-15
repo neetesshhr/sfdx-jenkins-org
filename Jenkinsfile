@@ -22,7 +22,8 @@ node {
     // -------------------------------------------------------------------------
 
     stage('checkout source') {
-        checkout scm
+        echo "hello world"
+		checkout scm
     }
 
 
