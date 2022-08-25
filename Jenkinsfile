@@ -72,7 +72,7 @@ node {
 		    }
 		}
 		stage('CHeck for juint and Deploy'){
-			rc = command "${toolbelt} sfdx force:mdapi:delpoy --wait 10 --deploydir ${DEPLOYDIR} --targetusername UAT --junit --json > report.json"
+			rc = command "${toolbelt} sfdx force:mdapi:deploy --wait 10 --deploydir ${DEPLOYDIR} --targetusername UAT --junit --json > report.json"
 		}
 	    }
 	}
