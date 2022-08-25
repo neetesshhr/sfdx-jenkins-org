@@ -6,6 +6,7 @@ node {
     def SF_USERNAME=env.SF_USERNAME
     def SERVER_KEY_CREDENTIALS_ID=env.SERVER_KEY_CREDENTIALS_ID  ?: "SomePassword"
     def DEPLOYDIR='src'
+	def DEPLORDIRLWC = 'src/lwc'
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
 
@@ -69,6 +70,9 @@ node {
 		    if (rc != 0) {
 		        error 'Salesforce deploy failed.'
 		    }
+		}
+		stage('CHeck for juint and Deploy'){
+			rc = command "${toolbelt} sfdx force:mdapi:delpoy --wait 10 --deploydir ${DEPLOYDIRLWC} --targetusername UAT --junit --json > report.json"
 		}
 	    }
 	}
